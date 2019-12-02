@@ -10,29 +10,23 @@
     
 """
 # исправить соответственно задаче while2
-Question_Answer = [
-    {"question" : "Как дела?", "answer" : "Хорошо!"},
-    {"question" : "Что делаешь?", "answer" : "Программирую"}, 
-    {"question" : "Какая погода?", "answer" : "Солнечно"}, 
-    {"question" : "Куда уезжаешь?", "answer" : "В США"}
-]
+Question_Answer = {
+    "Как дела?" : "Хорошо!",
+    "Что делаешь?" : "Программирую", 
+    "Какая погода?" : "Солнечно", 
+    "Куда уезжаешь?" : "В США"
+}
 
 def ask_user_dict():
-        answer = ''
         while True:
             try:
                 User_question = input('Введите вопрос: ').capitalize()
-                for q in Question_Answer:
-                    question = q["question"]
-                    if User_question == question:
-                        answer = q["answer"]
-                        print(answer)
-                        break
-                    
-                if answer == '':
-                    print("Неверный вопрос")
-                else:
+                if User_question in Question_Answer.keys():
+                    answer = Question_Answer.get(User_question)
+                    print(answer)
                     break
+                else:
+                    print("Неверный вопрос")
             except KeyboardInterrupt:
                 print('\n'"Пока!")
                 break
