@@ -14,32 +14,26 @@
     Программа: Программирую
     
 """
-Question_Answer = [
+Question_Answer = {
     # формат словаря по условию задания должен быть "Как дела": "Хорошо!", "Что делаешь?": "Программирую"
     # метки "question" и "answer" не нужны
     # в будущем это сильно упросит код функции ask_user_dict()
     # проверку на вхождение вопроса в словарь можно будет сделать условием: if user_question in Question_Answer.keys()
-    {"question" : "Как дела?", "answer" : "Хорошо!"},
-    {"question" : "Что делаешь?", "answer" : "Программирую"}, 
-    {"question" : "Какая погода?", "answer" : "Солнечно"}, 
-    {"question" : "Куда уезжаешь?", "answer" : "В США"}
-]
+    "Как дела?" : "Хорошо!",
+    "Что делаешь?" : "Программирую", 
+    "Какая погода?" : "Солнечно", 
+    "Куда уезжаешь?" : "В США"
+}
 
 def ask_user_dict():
-    answer = ''
     while True:
         User_question = input('Введите вопрос: ').capitalize()
-        for q in Question_Answer:
-            question = q["question"]
-            if User_question == question:
-                answer = q["answer"]
-                print(answer)
-                break
-               
-        if answer == '':
-            print("Неверный вопрос")
-        else:
+        if User_question in Question_Answer.keys():
+            answer = Question_Answer.get(User_question)
+            print(answer)
             break
+        else:
+            print("Неверный вопрос")
     
 if __name__ == "__main__":
     ask_user_dict()

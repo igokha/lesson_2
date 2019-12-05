@@ -29,17 +29,18 @@ def main():
         class_score = school_class['scores']
         class_num = school_class['school_class']
         # цикл ниже можно заменить на меньшую конструкцию:
-        # class_sum = sum(class_score)
-        # class_count = count(class_score)
-        # school_score_sum += class_sum
-        # school_score_count += class_count
+        class_sum = sum(class_score)
+        class_count = len(class_score) #здесь все таки len()
+        school_score_sum += class_sum
+        school_score_count += class_count
+        """
         for score in class_score:
             school_score_sum  += score
             school_score_count += 1
-    
+        """
         # здесь соответственно с учетом новых переменных получится
-        # school_class_score_avg = class_sum/class_count
-        school_class_score_avg = sum(class_score) / len(class_score)
+        school_class_score_avg = class_sum/class_count
+        #school_class_score_avg = sum(class_score) / len(class_score)
         print(f"Cредний балл для класса {class_num}: {school_class_score_avg}")
 
     school_score_avg = school_score_sum / school_score_count
